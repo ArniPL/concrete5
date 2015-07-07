@@ -104,9 +104,6 @@
     ConcreteLayout.prototype._updateChooseTypeForm = function () {
         var typeval = this.$selectgridtype.find('option:selected').val();
         var obj = this;
-        if (obj.options.editing) {
-            obj.$selectgridtype.prop('disabled', true);
-        }
         switch (typeval) {
             case 'FF':
                 this.$formviewthemegrid.hide();
@@ -140,6 +137,10 @@
                     jQuery.fn.dialog.hideLoader();
                 });
                 break;
+        }
+
+        if (this.options.editing) {
+            this.$selectgridtype.prop('disabled', true);
         }
     };
 

@@ -6,7 +6,6 @@ use Concrete\Core\Url\Resolver\CanonicalUrlResolver;
 use Concrete\Core\Url\Resolver\Manager\ResolverManager;
 use Concrete\Core\Url\Resolver\PageUrlResolver;
 use Concrete\Core\Url\Resolver\PathUrlResolver;
-use Concrete\Core\Url\Resolver\RouteUrlResolver;
 
 class UrlServiceProvider extends Provider
 {
@@ -36,7 +35,6 @@ class UrlServiceProvider extends Provider
                 $path_resolver = new PathUrlResolver();
                 $manager = new ResolverManager('concrete.path', $path_resolver);
                 $manager->addResolver('concrete.page', new PageUrlResolver());
-                $manager->addResolver('concrete.route', new RouteUrlResolver());
 
                 return $manager;
             });

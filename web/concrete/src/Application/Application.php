@@ -22,6 +22,7 @@ use Environment;
 use Illuminate\Container\Container;
 use Job;
 use JobSet;
+use Loader;
 use Log;
 use Package;
 use Page;
@@ -101,7 +102,7 @@ class Application extends Container
         // Delete and re-create the cache directory
         $cacheDir = Config::get('concrete.cache.directory');
         if (is_dir($cacheDir)) {
-            $fh = Core::make('helper/file');
+            $fh = Loader::helper("file");
             $fh->removeAll($cacheDir, true);
         }
         $this->setupFilesystem();
@@ -292,13 +293,10 @@ class Application extends Container
      */
     public function handleURLSlashes(SymfonyRequest $request)
     {
-        $parsedUrl = (string) Url::createFromUrl($request->getUri());
+        $url = Url::createFromUrl($request->getUri());
         if ($request->getPathInfo() != '/') {
-            $parsedUrlWithoutQueryString = strstr($parsedUrl, '?', true) ?: $parsedUrl;
-            $requestUrl = $request->getUri();
-            $requestUrlWithoutQueryString = strstr($requestUrl, '?', true) ?: $requestUrl;
-            if (urldecode($parsedUrlWithoutQueryString) != urldecode($requestUrlWithoutQueryString)) {
-                $response = new RedirectResponse($parsedUrl, 301);
+            if (urldecode((string) $url) != urldecode($request->getUri())) {
+                $response = new RedirectResponse((string) $url, 301);
                 $response->setRequest($request);
 
                 return $response;

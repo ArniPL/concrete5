@@ -121,11 +121,6 @@ $seoSet = AttributeSet::getByHandle('seo');
                     <?= t('Versions') ?>
                 </a>
             </li>
-            <li>
-                <a href="#" data-launch-sub-panel-url="<?= URL::to('/ccm/system/panels/page/devices') ?>">
-                    <?= t('Mobile Preview') ?>
-                </a>
-            </li>
         <?php
         }
 

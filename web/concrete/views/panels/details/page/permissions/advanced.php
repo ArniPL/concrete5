@@ -148,8 +148,7 @@ ccm_refreshPagePermissions = function() {
     if (panel) {
         panel.openPanelDetail({
             'identifier': 'page-permissions',
-            'url': '<?=URL::to("/ccm/system/panels/details/page/permissions")?>',
-            target: null
+            'url': '<?=URL::to("/ccm/system/panels/details/page/permissions")?>'
         });
     } else {
 		jQuery.fn.dialog.showLoader();

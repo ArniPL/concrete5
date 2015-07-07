@@ -22,7 +22,7 @@ class Seo
     public function setCustomTitle($title)
     {
         $this->hasCustomTitle = true;
-        $this->clearTitleSegments();
+        $this->titleSegments = array();
         $this->addTitleSegmentBefore($title);
         return $this;
     }
@@ -37,11 +37,6 @@ class Seo
     {
         array_unshift($this->titleSegments, $segment);
         return $this;
-    }
-    
-    public function clearTitleSegments()
-    {
-        $this->titleSegments = array();
     }
 
     public function setTitleFormat($format)

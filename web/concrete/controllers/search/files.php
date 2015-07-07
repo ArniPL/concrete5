@@ -166,11 +166,6 @@ class Files extends Controller
         return $this->result;
     }
 
-    public function getListObject()
-    {
-        return $this->fileList;
-    }
-
     public function field($field)
     {
         $r = $this->getField($field);

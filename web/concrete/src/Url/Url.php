@@ -6,7 +6,6 @@ use RuntimeException;
 
 class Url extends \League\Url\Url implements UrlInterface
 {
-
     public function setPortIfNecessary($port)
     {
         if (

@@ -50,7 +50,7 @@ class RequestBase extends SymfonyRequest
     protected $c;
 
     /**
-     * @return static
+     * @return SymfonyRequest
      */
     public static function getInstance()
     {
